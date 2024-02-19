@@ -1,0 +1,163 @@
+/* body {    /remove as margens do corpo/ 
+  margin: 0;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap'); /*at-rule nesse caso import, importa o css do google @*/
+
+*, :root { /*seleciona todos elementos e tudo que tiver na raiz/resetando/definindo o css de tudo*/
+  margin: 0;
+  padding: 0; /*comentando estas duas linhas, mantem padrao que tem no navegador*/
+  box-sizing: border-box; /*quando você define a largura ou a altura de um elemento, o preenchimento e a borda serão incluídos nesses valores, técnica bastante útil para garantir que as dimensões dos elementos sejam mais previsíveis e fáceis de gerenciar, especialmente em layouts responsivos.*/
+  /* border: 1px solid red; */
+  font-family: 'Inter', sans-serif;   /*definir fonte no css, se não encontrar Inter, transforma em sans serif*/
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+/*body { /definindo limites para a caixa body/
+  border: 1px solid red;
+  max-width: 640px;
+  margin: 0 auto; /ordem, topo > direita > baixo > esquerda, conceito shorthand/
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 400; poderia ser assim também
+}*/
+
+body {
+  background-color: #0F172A;
+}
+
+main {
+  padding: 20px;
+  /*border: 1px solid black; */
+  max-width: 640px;
+  margin: 0 auto 64px; 
+}
+
+header { /*35° define cabeçalho*/
+  margin-top: 64px;  /*margem fora da caixa*/
+  padding-bottom: 24px;  /*preenchimento inferior dentro da caixa*/
+  border-bottom: 1px solid #334155; /*borda inferior caixa*/
+}
+
+#hcj { /*45° delimita imagem*/
+  width: 80px;
+  height: auto;
+}
+
+header h1 {  /*36°detalhamento texto teste seus conhecimentos*/
+  /* margin-top: 24px; */
+  font-size: 30px; /*diminui size do teste seus conhecimentos*/
+  color: #F1F5F9; /*cor de texto*/
+}
+
+#quiz { /*46°iniciar contador*/
+  counter-reset: quiz-item;
+}
+.quiz-item { /*37º seletor de classe que define a apresentação e o layout da classe quiz-item*/
+  margin-top: 24px;
+  border: 1px solid #475569;
+  border-radius: 6px; /*arredondamento de borda*/
+
+  overflow: hidden; /*esconder qualquer transbordar dos filhos inclusive*/
+}
+
+.quiz-item h3 { /*38°definindo h3*/
+  padding: 16px 20px; /*16 em cima e embaixo, 20 nas laterais*/
+  color: #E2E8F0;
+  
+  display: flex;/*quando posto no pai(h3) o filho "before" fica ao lado */
+  align-items: center;
+  gap: 12px;
+
+  background: #1E293B;
+}
+
+.quiz-item h3::before { /*47°cada vez que aparecer um h3, irá incrementar no quiz=item*/
+  counter-increment: quiz-item;
+  content: counter(quiz-item);
+
+  background-color: #475569;
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  border-radius: 50%;
+  /* font-weight: 700; Não precisa poir h1 e h3 são por padrão 700*/
+
+  display: flex; /*flex para poder alinhar o numero com o texto, nos eixos x e y*/
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /*evitar encurtamento quando comprimida comprimento tela pelo usuario final*/
+}
+
+.quiz-item dl { /*39°definindo description list*/
+  padding: 20px 24px;/*preenchimento dl*/
+  display: grid; /*conceito 'grid': permite utilizar o 'gap' pois delimita grade para as caixas no dl*/
+  gap: 8px; /*define espaçamento Entre os grids, neste caso vertical*/
+
+}
+
+.quiz-item dl dt { /*40ºdefinindo description terms/dt é pai do input*/
+  font-size: 14px;
+  font-weight: 400; /*400 é o padrão*/
+  line-height: 24px; /*altura da linha*/
+  letter-spacing: 0px; /*espaçameneto vertical entre as letras*/
+  display: flex; /*conceito 'flexbox': colocar elemento um ao lado do outro, este permite utilizar o align-items ou gap/semelhante ao grid>gap. Se tivesse mais iten no dt todos ficariam ao lado um do outro*/
+  align-items: center;/*alinha os elementos/blocos do dt verticalmente*/
+  gap: 8px; /*define espaçamento Entre os elementos, neste caso horizontal, foi colocado no pai dt, passa para o filho input*/
+  color: #E2E8F0;
+}
+
+
+input  {/*41°estilizando TODOS input*/
+  all: unset;/*remove todas atribuições input, para redefinir, formatação/funcionalidade*/
+  border: 1px solid #94A3B8;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%; /*arredonda as bordas*/
+  /**/
+  /* display: block; /*pegaria a linha toda para caixa input(como se fosse o raciocinio div ao invés span*/
+  /* display: inline;/*semelhante ao span porém não aceita width and height */
+  /* display: inline-block; /*útil para alinhar elementos <input> horizontalmente enquanto ainda mantém a capacidade de estilizá-los como blocos. */
+  display: flex;/*permitido com display flex no pai deste(dt)*/
+  align-items: center;/*alinha eixo x (verticalmente alinhado)*/
+  justify-content: center;/*alinha eixo y(horizontalmente alinhado)*/
+  flex-shrink: 0;
+}
+
+input:checked { /*42º após redefinir inptus, é necessário verificar o ato de assinalar o input*/
+  border: 1px solid #A3E635;/*quando assinala borda fica nesta cor*/
+}
+
+/*pseudo-selector, todos estes que apresentam :root :checked*/
+input:checked:before { /*43° elemento filho do input*/
+  content: ""; /*conteúdo do input-prévio/antes de clicar o input aparenta vazio*/
+  width: 10px;
+  height: 10px;
+
+  /* display: block; /*define bloco a bolinha que aparecerá após clicar, foi removido pois o pai está como flex*/
+  background-color: #A3E635;
+  border-radius: 50px;
+}
+/**/
+
+/* abaixo é uma declaração*/
+#acertos { /*34º*/
+  text-align: center; 
+  background-color: #A3E635;
+
+  position: fixed;
+  bottom:0;
+  left: 0; /*cola no canto esquerdo*/
+
+  width: 100%; /*estende por toda largura*/
+  padding: 12px;  /*preenchimento*/
+}
+
+/* *{  /asterisco é um seletor universal de todos elementos/
+  border: 1px solid red; /neste caso aplica borda de 1px vermelha em todas caixas/
+}*/

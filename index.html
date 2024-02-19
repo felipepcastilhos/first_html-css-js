@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first_html-css-js</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+
+        <header> <!--após o CSS inicial/ 34º colocar tag header para definir cabeçalho   -->
+          <img id=hcj src="https://www.pikpng.com/pngl/b/150-1506141_html-css-and-javascript-logo-html5-css3-js.png" alt="Logo HTLM/CSS/JS"> <!44º//carrega imagem>
+          <h1>Teste seus conhecimentos</h1> <!1º// Tag que estiliza "teste..." como heading 1 –>
+        </header>
+      
+        <div id="quiz"><!14º//O id é um atributo global que define um identificador (ID) que deve ser único em todo o documento. quiz é a caixa que pega todos h3+dl>
+        </div> <!agrupar caracteristicas na divisao filho>
+      
+        <template> <!9º//declarar fragmentos/formatação de HTML que podem ser clonados e inseridos no documento por um script>
+          <div class="quiz-item"><!2º//classifica como item do quiz>
+            <h3> <!3º>
+              Pergunta 01 <!3º//>
+            </h3> <!E> <!Tag que estiliza "Pergunta..." como heading 3 –>
+            <dl> <!4º//description list/define inicio de uma lista>
+              <dt> <!5º//description term/define inicio de um grupo de descrição de termo>
+                <input type="radio" name="item" value="0"> <!7º//tag 'input' para selecionar pelo usuario, possui as instruções todas com atributos, não tendo conteúdo fechando nela mesma // radio tipo input com 'bolinha' // value=0 é o que retorna quando selecionado este input // name define nome para input, se eu tiver esse input em 2 locais posso relaconar os valores para o nome deste input >
+                <span> <!8º//formata mantendo o input anterior ao lado na mesma linha com Resposta A>
+                  Resposta A <!6º//>
+                </span> 
+              </dt> 
+            </dl> 
+          </div> 
+        </template> 
+      
+        <div id="acertos"> <!29º//atribuido um id para este "container/bloco" >
+          <strong>Acertos</strong>
+          <span>0 de 10</span>
+        </div> 
+      
+      </main>
+      <script src="./index.js"></script>
+    </body>
+</html>
